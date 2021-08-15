@@ -27,4 +27,5 @@ The script blocks all websites in the websites array for the specified delay, by
 Unfortunately, this script doesn't work by default on Firefox and some other modern browsers, because of DoH (DNS over HTTPS). This feature is turned on by default as of recent updates and needs to be changed in browser settings by hand. It should be noted, that DoH was put in place to further protect users' privacy.
 
 [DoH Mozilla](https://support.mozilla.org/en-US/kb/firefox-dns-over-https)
+
 [DoH bugfix](https://stackoverflow.com/questions/37452361/why-is-my-hosts-file-entry-being-ignored-by-the-browser)
