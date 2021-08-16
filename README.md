@@ -24,8 +24,14 @@ The script blocks all websites in the websites array for the specified delay, by
 6. Prompt: input number of hours for the block
 
 ## PROBLEMS:
-Unfortunately, this script doesn't work by default on Firefox and some other modern browsers, because of DoH (DNS over HTTPS). This feature is turned on by default as of recent updates and needs to be changed in browser settings by hand. It should be noted, that DoH was put in place to further protect users' privacy.
+Unfortunately, this script doesn't work by default on Firefox and some other modern browsers in the US, because of DoH (DNS over HTTPS). This feature is turned on by default in recent updates and needs to be changed in browser settings by hand. It should be noted, that DoH was put in place to further protect users' privacy.
 
 [DoH Mozilla](https://support.mozilla.org/en-US/kb/firefox-dns-over-https)
 
 [DoH bugfix](https://stackoverflow.com/questions/37452361/why-is-my-hosts-file-entry-being-ignored-by-the-browser)
+
+Additionally, Firefox seems to hold its own DNS cache in memory, so if you have the sites open in browser you will be able to continue using them. I haven't found an easy solution to this problem: neither clearing the Firefox DNS cache nor disabling the features in 'about:config' didn't seem to work.
+
+**At the moment, the best solution is just to close the tabs and after about 3min, they will become unavailable.**
+
+For further troubleshooting check the comment at the bottom of the `blocker.js` file, where I go into further detail with links to the forums.
