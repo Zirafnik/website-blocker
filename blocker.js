@@ -1,6 +1,3 @@
-//PROBLEM FIREFOX: https://stackoverflow.com/questions/37452361/why-is-my-hosts-file-entry-being-ignored-by-the-browser
-//Doesn't work on Firefox and some other modern browsers, because of DoH (DNS over HTTPS);
-
 const fs = require('fs');
 const filePath = 'C:\\Windows\\System32\\drivers\\etc\\hosts';
 /*
@@ -17,7 +14,7 @@ MAC/LINUX:
 */
 
 const redirectPath = '127.0.0.1';
-let websites = ['reddit.com', 'facebook.com'];
+let websites = ['www.reddit.com', 'www.facebook.com'];
 let originalContent;
 
 //DELAY-TIME PROMPT
@@ -48,7 +45,7 @@ function block() {
         originalContent = fileContents;
 
         for(let i = 0; i < websites.length; i++) {
-            let blockWebsite = "\n" + redirectPath + " " + websites[i];
+            let blockWebsite = redirectPath + "\t" + websites[i] + "\r\n";
 
             if (fileContents.indexOf(blockWebsite) < 0) {
                 console.log(blockWebsite + ' is NOT included');
@@ -72,3 +69,22 @@ function unblock() {
         if (err) return console.log('Error!', err);
     });
 }
+
+/* TROUBLESHOOTING RESOURCES for PROBLEMS:
+
+Script doesn't work on Firefox and some other modern browsers, because of DoH (DNS over HTTPS):
+https://stackoverflow.com/questions/37452361/why-is-my-hosts-file-entry-being-ignored-by-the-browser
+
+General:
+https://newbedev.com/hosts-file-ignored-how-to-troubleshoot
+
+Flushing the OS DNS cache didn't seem to work for all sites.
+https://en.wikiversity.org/wiki/Computer_Networks/Ipconfig/DNS_Cache_Options#Activity_4_-_Purge_the_DNS_Resolver_Cache
+
+Firefox holds its own DNS cache in memory, so you have to wait for it to clear after closing the tabs (about 3min).
+- Disabling it in the 'about:config' by setting 'network.dns.offline-local' to 'false' and restarting Firefox, for immmediate and long-term effect didn't seem to work:
+- last comment here: https://stackoverflow.com/questions/37452361/why-is-my-hosts-file-entry-being-ignored-by-the-browser
+- https://superuser.com/questions/1433325/does-firefox-ignore-the-hosts-file-how-to-make-firefox-honor-the-hosts-file
+
+- clearing the Firefox cache at 'about:networking#dns' didn't seem to work: https://support.mozilla.org/en-US/questions/1258756
+*/
