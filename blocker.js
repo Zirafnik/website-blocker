@@ -14,7 +14,7 @@ MAC/LINUX:
 */
 
 const redirectPath = '127.0.0.1';
-let websites = ['www.reddit.com', 'www.facebook.com'];
+let websites = ['www.reddit.com', 'www.facebook.com', 'www.linkedin.com', 'www.twitch.tv'];
 let originalContent;
 
 //DELAY-TIME PROMPT
@@ -28,6 +28,9 @@ const rl = readline.createInterface({
 rl.question("For how many hours: ", function(hours) {
     delay = hours * 60 * 60 * 1000;
     rl.close();
+    
+    let endTime = new Date(Date.now() + delay);
+    console.log('Blocked until: ' + "\x1b[35m" + endTime.toLocaleTimeString([], { hour12: false }) + "\x1b[0m" + '\n');
 
     block();
     setTimeout(unblock, delay);
@@ -37,6 +40,7 @@ rl.question("For how many hours: ", function(hours) {
 //FUNCTIONS
 function block() {
 	console.log('Blocking websites...');
+    console.log('==================================');
 		
     fs.readFile(filePath, (err, data) => {
         if (err) return console.log(err);
@@ -49,6 +53,7 @@ function block() {
 
             if (fileContents.indexOf(blockWebsite) < 0) {
                 console.log(blockWebsite + ' is NOT included');
+                console.log('----------------------------------');
 
                 fs.appendFile(filePath, blockWebsite, (err) => {
                     if (err) return console.log('Error: ', err);
@@ -56,13 +61,14 @@ function block() {
                 });
             } else {
                 console.log(blockWebsite + ' is included');
+                console.log('----------------------------------');
             }
         }
-        
     });
 };
 
 function unblock() {
+    console.log('==================================');
     console.log('Unblocking websites...');
 
     fs.writeFile(filePath, originalContent, (err) => {

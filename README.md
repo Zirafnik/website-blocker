@@ -12,6 +12,7 @@ The script blocks all websites in the websites array for the specified delay, by
 
 ## FEATURES:
 - Block-time prompt: hours (There was an option to create the script so it kept chosen websites blocked at certain hours of the day, but since my work schedule is not constant, I decided for a specified amount of time)
+- Shows until what time the websites are blocked
 - Redirects blocked websites to a chosen IP (in my case the local host)
 - Unblocks websites on its own, once the delay is up
 
