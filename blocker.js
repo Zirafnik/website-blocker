@@ -14,7 +14,7 @@ MAC/LINUX:
 */
 
 const redirectPath = '127.0.0.1';
-let websites = ['www.reddit.com', 'www.facebook.com', 'www.linkedin.com', 'www.twitch.tv'];
+let websites = ['www.reddit.com', 'www.facebook.com', 'www.linkedin.com', 'www.twitch.tv', 'www.instagram.com', 'www.netflix.com'];
 let originalContent;
 
 //DELAY-TIME PROMPT
