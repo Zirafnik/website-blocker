@@ -24,6 +24,9 @@ The script blocks all websites in the websites array for the specified delay, by
 5. Run it in the terminal with `node blocker.js`
 6. Prompt: input number of hours for the block
 
+## unblocker.js
+If you happen to stop the `blocker.js` script before it unblocks the websites (ex. OS restart), run the `unblocker.js` script. It unblocks all the websites according to the backup `hosts` file saved elsewhere.
+
 ## PROBLEMS:
 Unfortunately, this script doesn't work by default on Firefox and some other modern browsers in the US, because of DoH (DNS over HTTPS). This feature is turned on by default in recent updates and needs to be changed in browser settings by hand. It should be noted, that DoH was put in place to further protect users' privacy.
 
